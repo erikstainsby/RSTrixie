@@ -13,7 +13,33 @@
 		031610D814ECBDB5001FFC9F /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 031610D614ECBDB5001FFC9F /* Credits.rtf */; };
 		031610DB14ECBDB5001FFC9F /* RSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */; };
 		031610DE14ECBDB5001FFC9F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 031610DC14ECBDB5001FFC9F /* MainMenu.xib */; };
+		031610E714ECBEAB001FFC9F /* RSTrixiePlugin.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */; };
+		031610E914ECBEE0001FFC9F /* RSTrixiePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */; };
+		03B4C4A714EE042300FC83D7 /* ActionDemo.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03B4C4A614EE042300FC83D7 /* ActionDemo.bundle */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		031610E614ECBE92001FFC9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				031610E714ECBEAB001FFC9F /* RSTrixiePlugin.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0316114314ECC2BB001FFC9F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				03B4C4A714EE042300FC83D7 /* ActionDemo.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		031610C314ECBDB5001FFC9F /* RSTrixie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSTrixie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,14 +47,16 @@
 		031610CA14ECBDB5001FFC9F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		031610CB14ECBDB5001FFC9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		031610CC14ECBDB5001FFC9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		031610CF14ECBDB5001FFC9F /* RSTrixie-Info.plist */ = {isa = PBXFileReference; path = "RSTrixie-Info.plist"; sourceTree = "<group>"; };
+		031610CF14ECBDB5001FFC9F /* RSTrixie-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RSTrixie-Info.plist"; sourceTree = "<group>"; };
 		031610D114ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		031610D314ECBDB5001FFC9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		031610D514ECBDB5001FFC9F /* RSTrixie-Prefix.pch */ = {isa = PBXFileReference; path = "RSTrixie-Prefix.pch"; sourceTree = "<group>"; };
+		031610D514ECBDB5001FFC9F /* RSTrixie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSTrixie-Prefix.pch"; sourceTree = "<group>"; };
 		031610D714ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		031610D914ECBDB5001FFC9F /* RSAppDelegate.h */ = {isa = PBXFileReference; path = RSAppDelegate.h; sourceTree = "<group>"; };
+		031610D914ECBDB5001FFC9F /* RSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSAppDelegate.h; sourceTree = "<group>"; };
 		031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 		031610DD14ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSTrixiePlugin.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Workspace_Trixie-axnfrbtrkoszpiehooyethumxqxg/Build/Products/Debug/RSTrixiePlugin.framework"; sourceTree = "<group>"; };
+		03B4C4A614EE042300FC83D7 /* ActionDemo.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionDemo.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				031610C814ECBDB5001FFC9F /* Cocoa.framework in Frameworks */,
+				031610E914ECBEE0001FFC9F /* RSTrixiePlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +92,7 @@
 		031610C614ECBDB5001FFC9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */,
 				031610C714ECBDB5001FFC9F /* Cocoa.framework */,
 				031610C914ECBDB5001FFC9F /* Other Frameworks */,
 			);
@@ -93,6 +123,7 @@
 		031610CE14ECBDB5001FFC9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03B4C4A614EE042300FC83D7 /* ActionDemo.bundle */,
 				031610CF14ECBDB5001FFC9F /* RSTrixie-Info.plist */,
 				031610D014ECBDB5001FFC9F /* InfoPlist.strings */,
 				031610D314ECBDB5001FFC9F /* main.m */,
@@ -112,6 +143,8 @@
 				031610BF14ECBDB5001FFC9F /* Sources */,
 				031610C014ECBDB5001FFC9F /* Frameworks */,
 				031610C114ECBDB5001FFC9F /* Resources */,
+				031610E614ECBE92001FFC9F /* CopyFiles */,
+				0316114314ECC2BB001FFC9F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -251,9 +284,15 @@
 		031610E214ECBDB5001FFC9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Workspace_Trixie-axnfrbtrkoszpiehooyethumxqxg/Build/Products/Debug\"",
+					"~/Code/Workspaces/Trixie/RSTrixiePlugin/RSTrixiePlugin",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSTrixie/RSTrixie-Prefix.pch";
 				INFOPLIST_FILE = "RSTrixie/RSTrixie-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -262,9 +301,15 @@
 		031610E314ECBDB5001FFC9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Workspace_Trixie-axnfrbtrkoszpiehooyethumxqxg/Build/Products/Debug\"",
+					"~/Code/Workspaces/Trixie/RSTrixiePlugin/RSTrixiePlugin",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSTrixie/RSTrixie-Prefix.pch";
 				INFOPLIST_FILE = "RSTrixie/RSTrixie-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -289,6 +334,7 @@
 				031610E314ECBDB5001FFC9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <RSTrixiePlugin/RSTrixiePlugin.h>
 
 @interface RSAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (retain) IBOutlet NSBox * box;
+@property (retain) IBOutlet NSArray * plugins;
+@property (assign) IBOutlet NSWindow * window;
+@property (retain) IBOutlet NSPopUpButton * pluginMenu;
+
+- (NSArray*) loadPlugins;
 
 @end
