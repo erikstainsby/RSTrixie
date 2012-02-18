@@ -29,6 +29,7 @@
 - (void) applicationWillFinishLaunching:(NSNotification *)notification {
 
 	NSMenu * menu = [[NSMenu alloc] init];	
+	
 	for(RSTrixiePlugin * p in plugins)
 	{
 		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p name] action:@selector(showPluginInView:) keyEquivalent:@""];
@@ -53,7 +54,7 @@ static NSView * activePluginView = nil;
 		[box addSubview:[p view]];
 	}
 	else {
-		[[[self window] contentView] replaceSubview:activePluginView with:[p view]];
+		[box replaceSubview:activePluginView with:[p view]];
 	}
 	activePluginView = [p view];
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, name);
