@@ -8,14 +8,33 @@
 
 #import <Cocoa/Cocoa.h>
 #import <RSTrixiePlugin/RSTrixiePlugin.h>
+#import "NSView+RSPositionView.h"
 
 @interface RSAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (retain) IBOutlet NSBox * box;
-@property (retain) IBOutlet NSArray * plugins;
+@property (retain) IBOutlet NSWindowController * windowController;
 @property (assign) IBOutlet NSWindow * window;
-@property (retain) IBOutlet NSPopUpButton * pluginMenu;
+
+@property (retain) IBOutlet NSSegmentedControl * segmentedControl;
+
+@property (retain) IBOutlet NSBox * box1;
+@property (retain) IBOutlet NSBox * box2;
+@property (retain) IBOutlet NSBox * box3;
+
+@property (retain) IBOutlet NSView * actionPanel;
+@property (retain) IBOutlet NSView * reactionPanel;
+@property (retain) IBOutlet NSView * conditionPanel;
+@property (retain) IBOutlet NSView * commentPanel;
+
+@property (retain) IBOutlet NSArray * actionPlugins;
+@property (retain) IBOutlet NSArray * reactionPlugins;
+@property (retain) IBOutlet NSArray * conditionPlugins;
+
+@property (retain) IBOutlet NSPopUpButton * actionMenu;
+@property (retain) IBOutlet NSPopUpButton * reactionMenu;
+@property (retain) IBOutlet NSPopUpButton * conditionMenu;
 
 - (NSArray*) loadPlugins;
+- (NSArray*) loadPluginsWithPrefix:(NSString*)prefix;
 
 @end
