@@ -15,6 +15,7 @@
 		031610DE14ECBDB5001FFC9F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 031610DC14ECBDB5001FFC9F /* MainMenu.xib */; };
 		031610E714ECBEAB001FFC9F /* RSTrixiePlugin.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */; };
 		031610E914ECBEE0001FFC9F /* RSTrixiePlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */; };
+		0369B0A114EE2B7B008EBFB3 /* ActionClick.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0369B0A014EE2B7B008EBFB3 /* ActionClick.bundle */; };
 		03B4C4A714EE042300FC83D7 /* ActionDemo.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 03B4C4A614EE042300FC83D7 /* ActionDemo.bundle */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				03B4C4A714EE042300FC83D7 /* ActionDemo.bundle in CopyFiles */,
+				0369B0A114EE2B7B008EBFB3 /* ActionClick.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +58,7 @@
 		031610DA14ECBDB5001FFC9F /* RSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSAppDelegate.m; sourceTree = "<group>"; };
 		031610DD14ECBDB5001FFC9F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		031610E414ECBDCB001FFC9F /* RSTrixiePlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RSTrixiePlugin.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Workspace_Trixie-axnfrbtrkoszpiehooyethumxqxg/Build/Products/Debug/RSTrixiePlugin.framework"; sourceTree = "<group>"; };
+		0369B0A014EE2B7B008EBFB3 /* ActionClick.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionClick.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B4C4A614EE042300FC83D7 /* ActionDemo.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ActionDemo.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +126,7 @@
 		031610CE14ECBDB5001FFC9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0369B0A014EE2B7B008EBFB3 /* ActionClick.bundle */,
 				03B4C4A614EE042300FC83D7 /* ActionDemo.bundle */,
 				031610CF14ECBDB5001FFC9F /* RSTrixie-Info.plist */,
 				031610D014ECBDB5001FFC9F /* InfoPlist.strings */,
