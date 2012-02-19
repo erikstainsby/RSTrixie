@@ -31,9 +31,6 @@
 @property (retain) IBOutlet NSPopUpButton * reactionMenu;
 @property (retain) IBOutlet NSPopUpButton * conditionMenu;
 
-- (NSArray*) loadPlugins;
 - (NSArray*) loadPluginsWithPrefix:(NSString*)prefix;
-
-- (void) finishLaunching;
 
 @end

@@ -62,9 +62,6 @@ static NSView * activeConditionPlugin;
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-
-	
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	
 	NSMenu * menu = [[NSMenu alloc] init];
 
@@ -73,13 +70,10 @@ static NSView * activeConditionPlugin;
 		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p name] action:@selector(showActionPlugin:) keyEquivalent:@""];
 		[menuItem setRepresentedObject:p];
 		[menu addItem:menuItem];
-		NSLog(@"%s- [%04d] added action menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
+			//		NSLog(@"%s- [%04d] added action menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
 	}
-	
-	NSLog(@"%s- [%04d] actionMenu: %@", __PRETTY_FUNCTION__, __LINE__, actionMenu);
-	
 	[actionMenu setMenu:menu];
-
+	menu = nil;
 	
 	NSMenu * menu2 = [[NSMenu alloc] init];	
 	for(RSTrixiePlugin * p in reactionPlugins)
@@ -90,7 +84,7 @@ static NSView * activeConditionPlugin;
 		NSLog(@"%s- [%04d] added reaction menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
 	}
 	[reactionMenu setMenu:menu2];
-	
+	menu2 = nil;
 	
 	NSMenu * menu3 = [[NSMenu alloc] init];	
 	for(RSTrixiePlugin * p in conditionPlugins)
@@ -202,40 +196,5 @@ static NSView * activeConditionPlugin;
 	return ourPlugins;
 }
 
-- (NSArray*) loadPlugins {
-	
-	NSBundle * main = [NSBundle mainBundle];
-	NSArray * all = [main pathsForResourcesOfType:@"bundle" inDirectory:@"../Plugins"];
-	
-	NSMutableArray * ourPlugins = [NSMutableArray array];
-	
-	id plugin = nil;
-	NSBundle * pluginBundle = nil;
-	
-	for(NSString * path in all)
-	{
-		pluginBundle = [NSBundle bundleWithPath:path];
-		
-		id bundleId = [pluginBundle bundleIdentifier];
-		
-		NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, bundleId);
-		
-		[pluginBundle load];
-		
-		Class prinClass = [pluginBundle principalClass];
-		if(![prinClass isSubclassOfClass:[RSTrixiePlugin class]]) {
-				// skip 
-			continue;
-		}
-		
-		plugin = [[prinClass alloc] initWithNibName:[prinClass className] bundle:bundleId];
-		[ourPlugins addObject:plugin];
-		
-		plugin = nil;
-		pluginBundle = nil;
-	}
-	
-	return ourPlugins;
-}
 
 @end
