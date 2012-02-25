@@ -13,6 +13,7 @@
 @interface RSTrixieEditor : NSWindowController
 
 @property (retain) IBOutlet NSSegmentedControl * segmentedControl;
+
 @property (weak) IBOutlet NSPopover *popover;
 @property (weak) IBOutlet NSPopover *reactionPopover;
 @property (weak) IBOutlet NSPopover *conditionPopover;
@@ -25,6 +26,7 @@
 @property (retain) IBOutlet NSView * reactionPanel;
 @property (retain) IBOutlet NSView * conditionPanel;
 @property (retain) IBOutlet NSView * commentPanel;
+@property (retain) IBOutlet NSTextField * comment;
 
 @property (retain) IBOutlet NSArray * actionPlugins;
 @property (retain) IBOutlet NSArray * reactionPlugins;
@@ -42,6 +44,11 @@
 @property (retain) IBOutlet RSTrixiePlugin * activeReactionPlugin;
 @property (retain) IBOutlet RSTrixiePlugin * activeConditionPlugin;
 
+
+- (IBAction) showActionHelp:(id)sender;
+- (IBAction) showReactionHelp:(id)sender;
+- (IBAction) showConditionHelp:(id)sender;
+
 - (NSArray*) loadPluginsWithPrefix:(NSString*)prefix;
 
 - (IBAction) setActionSelectorStringValue:(id)sender;
@@ -49,13 +56,11 @@
 - (IBAction) setConditionSelectorStringValue:(id)sender;
 
 - (RSTrixieRule *) composeRule;
+
 - (IBAction) addRule:(id)sender;
 - (IBAction) removeRule:(id)sender;
 - (IBAction) saveRule:(id)sender;
 
-- (IBAction) showActionHelp:(id)sender;
-- (IBAction) showReactionHelp:(id)sender;
-- (IBAction) showConditionHelp:(id)sender;
 
 
 @end

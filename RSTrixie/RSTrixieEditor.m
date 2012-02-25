@@ -23,6 +23,7 @@
 @synthesize reactionPanel;		// custom view
 @synthesize conditionPanel;		// custom view
 @synthesize commentPanel;
+@synthesize comment = _comment;
 
 @synthesize actionPlugins;		// view controllers 
 @synthesize reactionPlugins;	// view controllers 
@@ -203,16 +204,16 @@
 }
 
 - (IBAction) setActionSelectorStringValue:(id)sender {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
+		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
 	[[activeActionPlugin selectorField] setStringValue:sender];
 }
 - (IBAction) setReactionSelectorStringValue:(id)sender {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
+		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
 	[[activeReactionPlugin selectorField] setStringValue:sender];
 }
 - (IBAction) setConditionSelectorStringValue:(id)sender {
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
-	[[activeConditionPlugin selectorField] setStringValue:sender];
+		//	[[activeConditionPlugin selectorField] setStringValue:sender];
 }
 
 - (RSTrixieRule*) composeRule {
@@ -222,24 +223,36 @@
 	[rule setBindEvent:			[activeActionPlugin bindEvent]];
 	[rule setActionSelector:	[activeActionPlugin hasSelectorField]];
 	[rule setBindSelector:		[[activeActionPlugin selectorField] stringValue]];
-	[rule setPreventDefault:	[activeActionPlugin preventDefault]];
-	[rule setStopBubbling:		[activeActionPlugin stopBubbling]];
+	if( [activeActionPlugin hasPreventDefaultButton]) {
+		[rule setPreventDefault:	[activeActionPlugin preventDefault]];
+	}
+	if( [activeActionPlugin hasStopBubblingButton]) {
+		[rule setStopBubbling:		[activeActionPlugin stopBubbling]];
+	}
+	
+	[rule setReactionSelector:	[[activeReactionPlugin selectorField] stringValue]];
+	[rule setReactionBehaviour:	[activeReactionPlugin reactionBehaviour]];
 	[rule setCallbackFunction:	[activeReactionPlugin callbackFunction]];
+	
+	[rule setPredicate:			[[activeConditionPlugin selectorField] stringValue]];
 	[rule setPredicate:			[activeConditionPlugin predicate]];
 	
+	[rule setComment:			[[self comment] stringValue]];
+
+		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	return rule;
 }
 
 - (IBAction) addRule:(id)sender {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, [[self composeRule] description]);
+		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
+	[[NSNotificationCenter defaultCenter] postNotificationName:nnRSTrixieStoreNewRuleNotification object:[self composeRule]];
 }
 - (IBAction) removeRule:(id)sender {
-	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, [[self composeRule] emitScript]); 
+
 }
 - (IBAction) saveRule:(id)sender {
 	
 }
-
 
 
 @end
