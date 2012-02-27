@@ -414,7 +414,6 @@
 									<string key="NSFrame">{{20, 20}, {410, 79}}</string>
 									<reference key="NSSuperview" ref="870293281"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
 									<string key="NSReuseIdentifierKey">_NS:354</string>
 									<string key="NSAntiCompressionPriority">{250, 750}</string>
 									<bool key="NSEnabled">YES</bool>
@@ -594,7 +593,6 @@
 						<string key="NSFrame">{{10, 10}, {248, 64}}</string>
 						<reference key="NSSuperview" ref="571863287"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSAntiCompressionPriority">{250, 750}</string>
 						<bool key="NSEnabled">YES</bool>
@@ -718,6 +716,14 @@
 						<reference key="destination" ref="874886563"/>
 					</object>
 					<int key="connectionID">117</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">comment</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="504255944"/>
+					</object>
+					<int key="connectionID">182</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -1360,7 +1366,7 @@
 				<reference key="dict.values" ref="1002"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">181</int>
+			<int key="maxID">182</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1436,9 +1442,9 @@
 							<string>setActionSelectorStringValue:</string>
 							<string>setConditionSelectorStringValue:</string>
 							<string>setReactionSelectorStringValue:</string>
-							<string>showActionHelp:</string>
-							<string>showConditionHelp:</string>
-							<string>showReactionHelp:</string>
+							<string>showActionPlugin:</string>
+							<string>showConditionPlugin:</string>
+							<string>showReactionPlugin:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1463,9 +1469,9 @@
 							<string>setActionSelectorStringValue:</string>
 							<string>setConditionSelectorStringValue:</string>
 							<string>setReactionSelectorStringValue:</string>
-							<string>showActionHelp:</string>
-							<string>showConditionHelp:</string>
-							<string>showReactionHelp:</string>
+							<string>showActionPlugin:</string>
+							<string>showConditionPlugin:</string>
+							<string>showReactionPlugin:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1494,15 +1500,15 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">showActionHelp:</string>
+								<string key="name">showActionPlugin:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">showConditionHelp:</string>
+								<string key="name">showConditionPlugin:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">showReactionHelp:</string>
+								<string key="name">showReactionPlugin:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -1515,9 +1521,6 @@
 							<string>actionMenu</string>
 							<string>actionPanel</string>
 							<string>actionPlugins</string>
-							<string>activeActionPlugin</string>
-							<string>activeConditionPlugin</string>
-							<string>activeReactionPlugin</string>
 							<string>box1</string>
 							<string>box2</string>
 							<string>box3</string>
@@ -1542,9 +1545,6 @@
 							<string>NSPopUpButton</string>
 							<string>NSView</string>
 							<string>NSArray</string>
-							<string>RSTrixiePlugin</string>
-							<string>RSTrixiePlugin</string>
-							<string>RSTrixiePlugin</string>
 							<string>NSBox</string>
 							<string>NSBox</string>
 							<string>NSBox</string>
@@ -1572,9 +1572,6 @@
 							<string>actionMenu</string>
 							<string>actionPanel</string>
 							<string>actionPlugins</string>
-							<string>activeActionPlugin</string>
-							<string>activeConditionPlugin</string>
-							<string>activeReactionPlugin</string>
 							<string>box1</string>
 							<string>box2</string>
 							<string>box3</string>
@@ -1610,18 +1607,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">actionPlugins</string>
 								<string key="candidateClassName">NSArray</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">activeActionPlugin</string>
-								<string key="candidateClassName">RSTrixiePlugin</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">activeConditionPlugin</string>
-								<string key="candidateClassName">RSTrixiePlugin</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">activeReactionPlugin</string>
-								<string key="candidateClassName">RSTrixiePlugin</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">box1</string>
@@ -1696,67 +1681,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/RSTrixieEditor.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">RSTrixiePlugin</string>
-					<string key="superclassName">NSViewController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>name</string>
-							<string>preventDefaultButton</string>
-							<string>rules</string>
-							<string>selectorField</string>
-							<string>stopBubblingButton</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>NSString</string>
-							<string>NSButton</string>
-							<string>NSMutableArray</string>
-							<string>NSTextField</string>
-							<string>NSButton</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>name</string>
-							<string>preventDefaultButton</string>
-							<string>rules</string>
-							<string>selectorField</string>
-							<string>stopBubblingButton</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">name</string>
-								<string key="candidateClassName">NSString</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">preventDefaultButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">rules</string>
-								<string key="candidateClassName">NSMutableArray</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">selectorField</string>
-								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">stopBubblingButton</string>
-								<string key="candidateClassName">NSButton</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RSTrixiePlugin.h</string>
 					</object>
 				</object>
 			</object>

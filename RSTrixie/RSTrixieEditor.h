@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <RSTrixiePlugin/RSTrixiePlugin.h>
+#import <RSTrixiePlugin/RSTrixie.h>
 #import "NSView+RSPositionView.h"
 
 @interface RSTrixieEditor : NSWindowController
@@ -26,6 +26,7 @@
 @property (retain) IBOutlet NSView * reactionPanel;
 @property (retain) IBOutlet NSView * conditionPanel;
 @property (retain) IBOutlet NSView * commentPanel;
+
 @property (retain) IBOutlet NSTextField * comment;
 
 @property (retain) IBOutlet NSArray * actionPlugins;
@@ -40,14 +41,15 @@
 @property (retain) IBOutlet NSButton * reactionHelp;
 @property (retain) IBOutlet NSButton * conditionHelp;
 
-@property (retain) IBOutlet RSTrixiePlugin * activeActionPlugin;
-@property (retain) IBOutlet RSTrixiePlugin * activeReactionPlugin;
-@property (retain) IBOutlet RSTrixiePlugin * activeConditionPlugin;
+@property (retain) RSActionPlugin * activeActionPlugin;
+@property (retain) RSReactionPlugin * activeReactionPlugin;
+@property (retain) RSConditionPlugin * activeConditionPlugin;
 
 
-- (IBAction) showActionHelp:(id)sender;
-- (IBAction) showReactionHelp:(id)sender;
-- (IBAction) showConditionHelp:(id)sender;
+
+- (IBAction) showActionPlugin:(id)sender;
+- (IBAction) showReactionPlugin:(id)sender;
+- (IBAction) showConditionPlugin:(id)sender;
 
 - (NSArray*) loadPluginsWithPrefix:(NSString*)prefix;
 

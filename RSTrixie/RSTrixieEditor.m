@@ -11,6 +11,7 @@
 @implementation RSTrixieEditor
 
 @synthesize segmentedControl;
+
 @synthesize popover = _popover;
 @synthesize reactionPopover = _reactionPopover;
 @synthesize conditionPopover = _conditionPopover;
@@ -41,6 +42,7 @@
 @synthesize activeReactionPlugin;
 @synthesize activeConditionPlugin;
 
+
 - (id)init {
 	
     self = [super initWithWindowNibName:@"RSTrixieEditor" owner:self];
@@ -59,18 +61,15 @@
     
     return self;
 }
-- (void) windowWillLoad {
-
-}
 - (void) windowDidLoad {
 	
     [super windowDidLoad];
 	
 	NSMenu * menu = [[NSMenu alloc] init];
 
-	for(RSTrixiePlugin * p in actionPlugins)
+	for(RSActionPlugin * p in actionPlugins)
 	{
-		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p name] action:@selector(showActionPlugin:) keyEquivalent:@""];
+		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p pluginName] action:@selector(showActionPlugin:) keyEquivalent:@""];
 		[menuItem setRepresentedObject:p];
 		[menu addItem:menuItem];
 			//		NSLog(@"%s- [%04d] added action menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
@@ -79,9 +78,9 @@
 	menu = nil;
 	
 	NSMenu * menu2 = [[NSMenu alloc] init];	
-	for(RSTrixiePlugin * p in reactionPlugins)
+	for(RSReactionPlugin * p in reactionPlugins)
 	{
-		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p name] action:@selector(showReactionPlugin:) keyEquivalent:@""];
+		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p pluginName] action:@selector(showReactionPlugin:) keyEquivalent:@""];
 		[menuItem setRepresentedObject:p];
 		[menu2 addItem:menuItem];
 			//		NSLog(@"%s- [%04d] added reaction menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
@@ -90,9 +89,9 @@
 	menu2 = nil;
 	
 	NSMenu * menu3 = [[NSMenu alloc] init];	
-	for(RSTrixiePlugin * p in conditionPlugins)
+	for(RSConditionPlugin * p in conditionPlugins)
 	{
-		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p name] action:@selector(showConditionPlugin:) keyEquivalent:@""];
+		NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:[p pluginName] action:@selector(showConditionPlugin:) keyEquivalent:@""];
 		[menuItem setRepresentedObject:p];
 		[menu3 addItem:menuItem];
 			//		NSLog(@"%s- [%04d] added condition menu item for plugin: %@", __PRETTY_FUNCTION__, __LINE__, [p name]);
@@ -111,7 +110,7 @@
 - (IBAction) showActionPlugin:(id)sender {
 	
 	NSString * name = [sender title];
-	RSTrixiePlugin * p  = [sender representedObject];
+	RSActionPlugin * p  = [sender representedObject];
 	
 	if( activeActionPlugin == nil) {
 		[actionPanel addSubview:[p view]];
@@ -128,7 +127,7 @@
 - (IBAction) showReactionPlugin:(id)sender {
 	
 	NSString * name = [sender title];
-	RSTrixiePlugin * p  = [sender representedObject];
+	RSReactionPlugin * p  = [sender representedObject];
 	
 	if( activeReactionPlugin == nil) {
 		[reactionPanel addSubview:[p view]];
@@ -145,7 +144,7 @@
 - (IBAction) showConditionPlugin:(id)sender {
 	
 	NSString * name = [sender title];
-	RSTrixiePlugin * p  = [sender representedObject];
+	RSConditionPlugin * p  = [sender representedObject];
 	
 	if( activeConditionPlugin == nil) {
 		[conditionPanel addSubview:[p view]];
@@ -209,7 +208,7 @@
 }
 - (IBAction) setReactionSelectorStringValue:(id)sender {
 		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
-	[[activeReactionPlugin selectorField] setStringValue:sender];
+	[[activeReactionPlugin targetField] setStringValue:sender];
 }
 - (IBAction) setConditionSelectorStringValue:(id)sender {
 	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, sender);
@@ -218,28 +217,43 @@
 
 - (RSTrixieRule*) composeRule {
 	
+	RSActionRule * actionRule = [[RSActionRule alloc] init];
+	
+	[actionRule setEvent:				[activeActionPlugin event]];
+	if([activeActionPlugin hasSelectorField]) {
+		[actionRule setSelector:		[[activeActionPlugin selectorField] stringValue]];
+	}
+	if( [activeActionPlugin preventDefaultButton]) {
+		[actionRule setPreventDefault:	[activeActionPlugin preventDefault]];
+	}
+	if( [activeActionPlugin stopBubblingButton]) {
+		[actionRule setStopBubbling:	[activeActionPlugin stopBubbling]];
+	}
+	
+	RSReactionRule * reactionRule = [[RSReactionRule alloc] init];
+	
+	[reactionRule setTarget:	[[activeReactionPlugin targetField] stringValue]];
+	[reactionRule setDelta:		[[activeReactionPlugin deltaField] stringValue]];
+	[reactionRule setDelay:		[[activeReactionPlugin delayField] integerValue]];
+	[reactionRule setPeriod:	[[activeReactionPlugin periodField] integerValue]];
+	[reactionRule setCallback:	[activeReactionPlugin callback]];
+	
+	
+	RSConditionRule * conditionRule = [[RSConditionRule alloc] init];
+	
+	[conditionRule setSelector:			[[activeConditionPlugin selectorField] stringValue]];
+	[conditionRule setValueOf:			[[activeConditionPlugin valueOfField] stringValue]];
+	[conditionRule setPredicate:		[activeConditionPlugin predicate]];
+	
 	RSTrixieRule * rule = [[RSTrixieRule alloc] init];
 	
-	[rule setBindEvent:			[activeActionPlugin bindEvent]];
-	[rule setActionSelector:	[activeActionPlugin hasSelectorField]];
-	[rule setBindSelector:		[[activeActionPlugin selectorField] stringValue]];
-	if( [activeActionPlugin hasPreventDefaultButton]) {
-		[rule setPreventDefault:	[activeActionPlugin preventDefault]];
-	}
-	if( [activeActionPlugin hasStopBubblingButton]) {
-		[rule setStopBubbling:		[activeActionPlugin stopBubbling]];
-	}
-	
-	[rule setReactionSelector:	[[activeReactionPlugin selectorField] stringValue]];
-	[rule setReactionBehaviour:	[activeReactionPlugin reactionBehaviour]];
-	[rule setCallbackFunction:	[activeReactionPlugin callbackFunction]];
-	
-	[rule setPredicate:			[[activeConditionPlugin selectorField] stringValue]];
-	[rule setPredicate:			[activeConditionPlugin predicate]];
-	
-	[rule setComment:			[[self comment] stringValue]];
+	[rule setAction:	actionRule];
+	[[rule reactions]	addObject:reactionRule];
+	[[rule conditions]	addObject:conditionRule];
 
-		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
+	[rule setComment:			[[self comment] stringValue]];
+	
+	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, rule);
 	return rule;
 }
 
