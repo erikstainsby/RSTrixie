@@ -233,11 +233,12 @@
 	RSReactionRule * reactionRule = [[RSReactionRule alloc] init];
 	
 	[reactionRule setTarget:	[[activeReactionPlugin targetField] stringValue]];
+	[reactionRule setAction:	[activeReactionPlugin action]];
 	[reactionRule setDelta:		[[activeReactionPlugin deltaField] stringValue]];
 	[reactionRule setDelay:		[[activeReactionPlugin delayField] integerValue]];
 	[reactionRule setPeriod:	[[activeReactionPlugin periodField] integerValue]];
-	[reactionRule setCallback:	[activeReactionPlugin callback]];
 	
+	[reactionRule setCallback:	[activeReactionPlugin callback]];
 	
 	RSConditionRule * conditionRule = [[RSConditionRule alloc] init];
 	
@@ -258,8 +259,9 @@
 }
 
 - (IBAction) addRule:(id)sender {
-		//	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
+	NSLog(@"%s- [%04d] %@", __PRETTY_FUNCTION__, __LINE__, @"");
 	[[NSNotificationCenter defaultCenter] postNotificationName:nnRSTrixieStoreNewRuleNotification object:[self composeRule]];
+
 }
 - (IBAction) removeRule:(id)sender {
 
